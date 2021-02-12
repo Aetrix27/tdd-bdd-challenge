@@ -27,7 +27,23 @@ it("should say hello", function() {
 // ========================================================
 
 
+it("it should multiply to 15 ", function(){
+  const area = utils.area(3,5)
+  expect(area).to.be.a('number')
+  expect(area).to.equal(15)
+})
 
+it("it should add to 25 ", function(){
+  const perimeter_result = utils.perimeter(2,2)
+  expect(perimeter_result).to.be.a('number')
+  expect(perimeter_result).to.equal(8)
+})
+
+it("it should show the area of the circle ", function(){
+  const area_result = utils.circleArea(3)
+  expect(area_result).to.be.a('number')
+  expect(Math.round(area_result)).to.equal(28)
+})
 
 // ========================================================
 // Level 2 Challenges
@@ -50,13 +66,28 @@ it("Should create a new (object) Item with name and price", function() {
   expect(item).to.have.property("quantity", 1)
 })
 
-it("Should return an array containing all items in cart")
+it("Should return an array containing all items in cart", function(){
+  const array = utils.getShoppingCart()
+  expect(array).to.be.a("array")
+})
 
-it("Should add a new item to the shopping cart")
+it("Should add a new item to the shopping cart", function(){
+  const array = utils.getShoppingCart()
+  const item = utils.createItem("banana", 1.00)
+  utils.addItemToCart(item)
+  console.log(array)
+  expect(array[0]).to.have.property("name", "banana")
+  expect(array[0]).to.have.property("price", 1.00)
 
-it("Should return the number of items in the cart")
+})
 
-it("Should remove items from cart")
+it("Should return the number of items in the cart", function(){
+  const array = utils.getShoppingCart()
+  const item = utils.createItem("banana", 1.00)
+  utils.addItemToCart(item)
+  expect(array).to.have.length(1)
+
+})
 
 // ========================================================
 // Stretch Challenges
